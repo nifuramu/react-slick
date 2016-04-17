@@ -89,7 +89,7 @@ export var getTrackLeft = function (spec) {
     }
   }
 
-  targetLeft = ((spec.slideIndex * spec.slideWidth) * -1) + slideOffset;
+  targetLeft = ((spec.slideIndex * spec.slideWidth) * -1) + slideOffset + ((spec.listWidth - spec.slideWidth) / 2);
 
   if (spec.variableWidth === true) {
       var targetSlideIndex;
