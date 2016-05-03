@@ -954,9 +954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 
-	    if (!this.state.autoPlayTimer) {
-	      this.autoPlay();
-	    }
+	    this.autoPlay();
 	  },
 	  swipeDirection: function swipeDirection(touchObject) {
 	    var xDist, yDist, r, swipeAngle;
@@ -981,6 +979,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  autoPlay: function autoPlay() {
 	    var _this2 = this;
 
+	    if (this.state.autoPlayTimer) {
+	      return;
+	    }
 	    var play = function play() {
 	      if (_this2.state.mounted) {
 	        var nextIndex = _this2.props.rtl ? _this2.state.currentSlide - _this2.props.slidesToScroll : _this2.state.currentSlide + _this2.props.slidesToScroll;
@@ -1628,7 +1629,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var prevArrow;
 
 	    if (this.props.prevArrow) {
-	      prevArrow = _react2['default'].createElement(this.props.prevArrow, prevArrowProps);
+	      prevArrow = _react2['default'].cloneElement(this.props.prevArrow, prevArrowProps);
 	    } else {
 	      prevArrow = _react2['default'].createElement(
 	        'button',
@@ -1681,7 +1682,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var nextArrow;
 
 	    if (this.props.nextArrow) {
-	      nextArrow = _react2['default'].createElement(this.props.nextArrow, nextArrowProps);
+	      nextArrow = _react2['default'].cloneElement(this.props.nextArrow, nextArrowProps);
 	    } else {
 	      nextArrow = _react2['default'].createElement(
 	        'button',
